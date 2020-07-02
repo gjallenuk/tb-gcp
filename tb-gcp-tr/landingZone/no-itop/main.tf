@@ -87,7 +87,7 @@ location = var.region
 
 module "audit_logging" {
   source = "../../audit-logging"
-  
+
   region             = var.region
   logging_project_id = module.shared_projects.shared_telemetry_id
   root_id            = var.root_id
