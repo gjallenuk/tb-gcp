@@ -413,11 +413,11 @@ variable "bucket_prefix" {
   type    = "string"
   default = "auditlogbucket-"
 }
-variable "label_fuction" {
+variable "label_function" {
   type    = "string"
   default = "bucket_to_store_root_folder_audit_logs"
 }
-variable "life_cycle_rule" {
+variable "lifecycle_rule" {
   type = list(map(string))
 
   default = [

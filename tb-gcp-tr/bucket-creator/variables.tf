@@ -6,43 +6,43 @@ variable "root_id" {
   type    = "string"
   default = ""
 }
-variable "logging_project_id" {
+variable "project_id" {
   type    = "string"
   default = ""
 }
-variable "randomidlen" {
+variable "random_id_len" {
   type    = "string"
-  default = "6"
+  default = ""
 }
 variable "services" {
   type    = "string"
-  default = "allServices"
+  default = ""
 }
 variable "location" {
   type    = "string"
-  default = "EUROPE-WEST2"
+  default = ""
 }
-variable "bucketprefix" {
+variable "bucket_prefix" {
   type    = "string"
-  default = "auditlogbucket-"
+  default = ""
 }
-variable "labelfuction" {
+variable "label_function" {
   type    = "string"
-  default = "bucket_to_store_root_folder_audit_logs"
+  default = ""
 }
-variable "lifecyclerule" {
+variable "lifecycle_rule" {
   type = list(map(string))
 
   default = [
     {
-      type          = "SetStorageClass"
-      storage_class = "NEARLINE"
-      age           = "30"
+      type          = ""
+      storage_class = ""
+      age           = ""
     },
     {
-      type          = "Delete"
+      type          = ""
       storage_class = ""
-      age           = "365"
+      age           = ""
     }
   ]
 }

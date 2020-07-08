@@ -74,8 +74,6 @@ module "shared_projects" {
   labels                         = var.labels
 }
 
-
-
 module "gcs_bucket_logging" {
 source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
@@ -128,15 +126,15 @@ module "shared-vpc" {
 module "audit-log-bucket" {
   source = "../../bucket-creator"
 
-  region = var.region
-  root_id = var.root_id
-  audit_logging_project_id = var.audit_logging_project_id
-  random_id_len = var.random_id_len
-  services = var.services
-  location = var.location
-  bucketprefix = var.bucket_prefix
-  label_fuction = var.label_fuction
-  life_cycle_rule = var.life_cycle_rule
+  region                   = var.region
+  root_id                  = var.root_id
+  project_id               = var.audit_logging_project_id
+  random_id_len            = var.random_id_len
+  services                 = var.services
+  location                 = var.location
+  bucket_prefix            = var.bucket_prefix
+  label_function           = var.label_function
+  lifecycle_rule           = var.lifecycle_rule
 }
 
 module "audit-log-sink-creation" {
@@ -144,17 +142,19 @@ module "audit-log-sink-creation" {
 
   log_sink_folder      = var.root_id
   log_sink_name        = var.log_sink_name
-  log_sink_destination = var.log_sink_destination
-  log_sink_filter      =  var.log_sink_filter
+  log_sink_destination = module.audit-log-bucket.audit_log_bucket_name
+  log_sink_filter      = "logName=(folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Factivity OR folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Fdata_access)"
+
+  depends_on           = module.audit-log-bucket
 }
 
 module "audit-log-writer-binding" {
   source = "../../project-iam-binding-creator"
 
   audit_logging_project_id = var.audit_logging_project_id
-  members = var.members
+  members                  = module.audit-log-sink-creation.log_sink_writer
 
-  depends_on = module.audit-log-bucket
+  depends_on               = module.audit-log-sink-creation
 }
 
 #####
