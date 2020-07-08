@@ -2,10 +2,6 @@ variable "region" {
   type    = "string"
   default = ""
 }
-variable "root_id" {
-  type    = "string"
-  default = ""
-}
 variable "project_id" {
   type    = "string"
   default = ""

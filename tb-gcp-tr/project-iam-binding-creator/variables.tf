@@ -1,14 +1,15 @@
 variable "audit_logging_project_id" {
-  description = ""
+  description = "Project ID of logging project"
   default = ""
   type = string
 }
 variable "members" {
-  description = ""
+  description = "List of log writers which will have permissions to create logs"
   default = []
+  type = list(string)
 }
 variable "role" {
-  description = ""
+  description = "Log creating permissions to assign to members"
   default = ""
   type = string
 }

@@ -393,10 +393,6 @@ variable "iam_members_bindings" {
 
 ### Audit Bucket Creator ###
 
-variable "audit_logging_project_id" {
-  type    = "string"
-  default = ""
-}
 variable "random_id_len" {
   type    = "string"
   default = "6"
@@ -436,25 +432,25 @@ variable "lifecycle_rule" {
 
 ### Audit Folder Log Sink Creator ###
 variable "log_sink_folder" {
-  description = ""
+  description = "Folder ID to attach the sink to"
   default = ""
   type = string
 }
 
 variable "log_sink_name" {
-  description = ""
-  default = "log_sink_1"
+  description = "Name of the audit bucket sink"
+  default = "audit_bucket_sink"
   type = string
 }
 
 variable "log_sink_destination" {
-  description = ""
+  description = "Export location for logs"
   default = ""
   type = string
 }
 
 variable "log_sink_filter" {
-  description = ""
+  description = "Filter which logs to export"
   default = ""
   type = string
 }
@@ -462,10 +458,10 @@ variable "log_sink_filter" {
 ### Audit IAM binding ###
 
 variable "members" {
-  description = ""
+  description = "Give log writer permissions to create logs in project"
   default = []
 }
 variable "role" {
-  description = ""
+  description = "Give log writer permissions to create logs in project"
   default = ""
 }

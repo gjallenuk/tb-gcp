@@ -127,8 +127,7 @@ module "audit-log-bucket" {
   source = "../../bucket-creator"
 
   region                   = var.region
-  root_id                  = var.root_id
-  project_id               = var.audit_logging_project_id
+  project_id               = module.shared_projects.shared_telemetry_id
   random_id_len            = var.random_id_len
   services                 = var.services
   location                 = var.location
@@ -149,7 +148,7 @@ module "audit-log-sink-creation" {
 module "audit-log-writer-binding" {
   source = "../../project-iam-binding-creator"
 
-  audit_logging_project_id = var.audit_logging_project_id
+  audit_logging_project_id = module.shared_projects.shared_telemetry_id
   members                  = module.audit-log-sink-creation.log_sink_writer
 }
 
