@@ -117,7 +117,17 @@
     },
     { 
       "type": "file", 
-      "source": "{{user `tb_repos_root_path`}}/tb-gcp-tr/audit-logging",
+      "source": "{{user `tb_repos_root_path`}}/tb-gcp-tr/bucket-creator",
+      "destination": "tb-gcp-tr/"
+    },
+    {
+      "type": "file",
+      "source": "{{user `tb_repos_root_path`}}/tb-gcp-tr/folder-log-sink-creator",
+      "destination": "tb-gcp-tr/"
+    },
+    {
+      "type": "file",
+      "source": "{{user `tb_repos_root_path`}}/tb-gcp-tr/project-iam-binding-creator",
       "destination": "tb-gcp-tr/"
     },
     {
