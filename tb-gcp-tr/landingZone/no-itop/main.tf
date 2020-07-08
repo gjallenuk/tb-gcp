@@ -144,8 +144,6 @@ module "audit-log-sink-creation" {
   log_sink_name        = var.log_sink_name
   log_sink_destination = module.audit-log-bucket.audit_log_bucket_name
   log_sink_filter      = "logName=(folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Factivity OR folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Fdata_access)"
-
-  depends_on           = module.audit-log-bucket
 }
 
 module "audit-log-writer-binding" {
@@ -153,8 +151,6 @@ module "audit-log-writer-binding" {
 
   audit_logging_project_id = var.audit_logging_project_id
   members                  = module.audit-log-sink-creation.log_sink_writer
-
-  depends_on               = module.audit-log-sink-creation
 }
 
 #####
