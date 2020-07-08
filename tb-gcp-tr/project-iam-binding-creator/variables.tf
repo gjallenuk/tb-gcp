@@ -1,4 +1,4 @@
-variable "logging_project_id" {
+variable "audit_logging_project_id" {
   description = ""
   default = ""
   type = string
