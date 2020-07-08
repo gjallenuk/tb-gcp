@@ -5,8 +5,7 @@ variable "audit_logging_project_id" {
 }
 variable "members" {
   description = ""
-  default = ""
-  type = string
+  default = []
 }
 variable "role" {
   description = ""
