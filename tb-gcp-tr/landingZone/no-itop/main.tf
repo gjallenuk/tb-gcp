@@ -148,8 +148,9 @@ module "audit-log-sink-creation" {
 module "audit-log-writer-binding" {
   source = "../../project-iam-binding-creator"
 
-  audit_logging_project_id = module.shared_projects.shared_telemetry_id
-  members                  = module.audit-log-sink-creation.log_sink_writer
+  project = module.shared_projects.shared_telemetry_id
+  members = module.audit-log-sink-creation.log_sink_writer
+  role    = var.audit_iam_role
 }
 
 #####
