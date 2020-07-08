@@ -75,6 +75,7 @@ module "shared_projects" {
 }
 
 
+
 module "gcs_bucket_logging" {
 source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
@@ -82,10 +83,9 @@ name = "${var.gcs_logs_bucket_prefix}-${var.tb_discriminator}"
 project_id = module.shared_projects.shared_telemetry_id
 iam_members = var.iam_members_bindings
 location = var.region
-
 }
 
-module "audit_logging" {
+module "audit_logging" {   ###needs to be removed
   source = "../../audit-logging"
 
   region             = var.region
@@ -122,6 +122,42 @@ module "shared-vpc" {
   private_dns_name         = var.private_dns_name
   private_dns_domain_name  = var.private_dns_domain_name
 }
+
+##### Audit logging #####
+
+module "audit-log-bucket" {
+  source = "../../bucket-creator"
+
+  region = var.region
+  root_id = var.root_id
+  audit_logging_project_id = var.audit_logging_project_id
+  random_id_len = var.random_id_len
+  services = var.services
+  location = var.location
+  bucketprefix = var.bucket_prefix
+  label_fuction = var.label_fuction
+  life_cycle_rule = var.life_cycle_rule
+}
+
+module "audit-log-sink-creation" {
+  source = "../../folder-log-sink-creator"
+
+  log_sink_folder      = var.root_id
+  log_sink_name        = var.log_sink_name
+  log_sink_destination = var.log_sink_destination
+  log_sink_filter      =  var.log_sink_filter
+}
+
+module "audit-log-writer-binding" {
+  source = "../../project-iam-binding-creator"
+
+  audit_logging_project_id = var.audit_logging_project_id
+  members = var.members
+
+  depends_on = module.audit-log-bucket
+}
+
+#####
 
 module "bastion-security" {
   source = "../../shared-bastion"

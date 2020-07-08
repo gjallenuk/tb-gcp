@@ -380,11 +380,92 @@ variable "gcs_logs_bucket_prefix" {
 variable "iam_members_bindings" {
   description = "The list of IAM members to grant permissions for the logs bucket"
   type = list(object({
-    role   = string,
+    role = string,
     member = string
   }))
   default = [{
     role   = "roles/storage.legacyBucketWriter",
     member = "group:cloud-storage-analytics@google.com"
   }]
+}
+
+##### Audit logging #####
+
+### Audit Bucket Creator ###
+
+variable "audit_logging_project_id" {
+  type    = "string"
+  default = ""
+}
+variable "random_id_len" {
+  type    = "string"
+  default = "6"
+}
+variable "services" {
+  type    = "string"
+  default = "allServices"
+}
+variable "location" {
+  type    = "string"
+  default = "EUROPE-WEST2"
+}
+variable "bucket_prefix" {
+  type    = "string"
+  default = "auditlogbucket-"
+}
+variable "label_fuction" {
+  type    = "string"
+  default = "bucket_to_store_root_folder_audit_logs"
+}
+variable "life_cycle_rule" {
+  type = list(map(string))
+
+  default = [
+    {
+      type          = "SetStorageClass"
+      storage_class = "NEARLINE"
+      age           = "30"
+    },
+    {
+      type          = "Delete"
+      storage_class = ""
+      age           = "365"
+    }
+  ]
+}
+
+### Audit Folder Log Sink Creator ###
+variable "log_sink_folder" {
+  description = ""
+  default = ""
+  type = string
+}
+
+variable "log_sink_name" {
+  description = ""
+  default = "log_sink_1"
+  type = string
+}
+
+variable "log_sink_destination" {
+  description = ""
+  default = ""
+  type = string
+}
+
+variable "log_sink_filter" {
+  description = ""
+  default = ""
+  type = string
+}
+
+### Audit IAM binding ###
+
+variable "members" {
+  description = ""
+  default = []
+}
+variable "role" {
+  description = ""
+  default = ""
 }
