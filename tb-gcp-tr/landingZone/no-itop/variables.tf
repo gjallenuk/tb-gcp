@@ -397,7 +397,7 @@ variable "location" {
   type    = "string"
   default = "EUROPE-WEST2"
 }
-variable "bucket_prefix" {
+variable "audit_log_bucket_prefix" {
   type    = "string"
   default = "admin-read-write-audit-log-bucket-"
 }

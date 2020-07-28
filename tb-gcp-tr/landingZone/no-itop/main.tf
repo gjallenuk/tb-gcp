@@ -119,7 +119,7 @@ module "audit-log-bucket" {
   source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
   project_id               = module.shared_projects.shared_telemetry_id
-  names                    = "${var.bucket_prefix}-${var.tb_discriminator}"
+  names                    = "${var.audit_log_bucket_prefix}-${var.tb_discriminator}"
   location                 = var.location
   labels                   = var.label_function
   lifecycle_rule           = var.lifecycle_rule
@@ -130,7 +130,7 @@ module "audit-log-sink-creation" {
 
   log_sink_folder      = var.root_id
   log_sink_name        = var.log_sink_name
-  log_sink_destination = "storage.googleapis.com/${module.audit-log-bucket.audit_log_bucket_name}"
+  log_sink_destination = module.audit-log-bucket.name
   log_sink_filter      = "logName=(folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Factivity OR folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Fdata_access)"
 }
 
