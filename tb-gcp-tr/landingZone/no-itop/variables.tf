@@ -393,21 +393,13 @@ variable "iam_members_bindings" {
 
 ### Audit Bucket Creator ###
 
-variable "random_id_len" {
-  type    = "string"
-  default = "6"
-}
-variable "services" {
-  type    = "string"
-  default = "allServices"
-}
 variable "location" {
   type    = "string"
   default = "EUROPE-WEST2"
 }
 variable "bucket_prefix" {
   type    = "string"
-  default = "auditlogbucket-"
+  default = "admin-read-write-audit-log-bucket-"
 }
 variable "label_function" {
   type    = "string"

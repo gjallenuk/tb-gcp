@@ -124,15 +124,12 @@ module "shared-vpc" {
 ##### Audit logging #####
 
 module "audit-log-bucket" {
-  source = "../../bucket-creator"
+  source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
-  region                   = var.region
   project_id               = module.shared_projects.shared_telemetry_id
-  random_id_len            = var.random_id_len
-  services                 = var.services
+  names                    = "${var.bucket_prefix}-${var.tb_discriminator}"
   location                 = var.location
-  bucket_prefix            = var.bucket_prefix
-  label_function           = var.label_function
+  labels                   = var.label_function
   lifecycle_rule           = var.lifecycle_rule
 }
 
