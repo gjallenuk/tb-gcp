@@ -83,14 +83,6 @@ iam_members = var.iam_members_bindings
 location = var.region
 }
 
-module "audit_logging" {   ###needs to be removed
-  source = "../../audit-logging"
-
-  region             = var.region
-  logging_project_id = module.shared_projects.shared_telemetry_id
-  root_id            = var.root_id
-}
-
 module "apis_activation" {
   source                   = "../../apis-activation"
   bastion_project_id       = module.shared_projects.shared_bastion_id

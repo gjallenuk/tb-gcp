@@ -22,4 +22,10 @@ variable "log_sink_filter" {
   type = string
 }
 
+variable "include_children" {
+  description = "include logs for folders and project below folder specified"
+  default = ""
+  type = string
+}
+
 
