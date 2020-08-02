@@ -24,7 +24,7 @@ variable "log_sink_filter" {
 
 variable "include_children" {
   description = "include logs for folders and project below folder specified"
-  default     = ""
+  default     = "true"
   type        = bool
 }
 
