@@ -395,29 +395,39 @@ variable "iam_members_bindings" {
 
 variable "location" {
   type    = "string"
-  default = "EUROPE-WEST2"
+  default = "EU"
 }
 variable "audit_log_bucket_prefix" {
   type    = "string"
-  default = "admin-read-write-audit-log-bucket-"
+  default = "log-bucket"
 }
-variable "label_function" {
-  type    = "string"
-  default = "bucket_to_store_root_folder_audit_logs"
+variable "audit_bucket_name" {
+  type = list(string)
+  default = ["-admin-read-write-audit"]
 }
-variable "lifecycle_rule" {
-  type = list(map(string))
-
+variable "labels" {
+  type    = map(string)
+  default = {"function" = "bucket_to_store_root_folder_audit_logs"}
+}
+variable "lifecycle_rules" {
   default = [
     {
-      type          = "SetStorageClass"
-      storage_class = "NEARLINE"
-      age           = "30"
+      action = {
+        type = "SetStorageClass"
+        storage_class = "NEARLINE"
+      },
+      condition = {
+        age = "30"
+      }
     },
     {
-      type          = "Delete"
-      storage_class = ""
-      age           = "365"
+      action = {
+        type = "Delete"
+        storage_class = ""
+      },
+      condition = {
+        age = "365"
+      }
     }
   ]
 }

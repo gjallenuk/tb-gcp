@@ -119,10 +119,11 @@ module "audit-log-bucket" {
   source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
   project_id               = module.shared_projects.shared_telemetry_id
-  names                    = "${var.audit_log_bucket_prefix}-${var.tb_discriminator}"
+  prefix                   = "${var.audit_log_bucket_prefix}-${var.tb_discriminator}"
+  names                    = var.audit_bucket_name
   location                 = var.location
-  labels                   = var.label_function
-  lifecycle_rule           = var.lifecycle_rule
+  labels                   = var.labels
+  lifecycle_rules          = var.lifecycle_rules
 }
 
 module "audit-log-sink-creation" {
