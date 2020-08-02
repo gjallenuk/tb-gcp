@@ -75,12 +75,12 @@ module "shared_projects" {
 }
 
 module "gcs_bucket_logging" {
-source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
+  source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
-name = "${var.gcs_logs_bucket_prefix}-${var.tb_discriminator}"
-project_id = module.shared_projects.shared_telemetry_id
-iam_members = var.iam_members_bindings
-location = var.region
+  name        = "${var.gcs_logs_bucket_prefix}-${var.tb_discriminator}"
+  project_id  = module.shared_projects.shared_telemetry_id
+  iam_members = var.iam_members_bindings
+  location    = var.region
 }
 
 module "apis_activation" {
@@ -118,12 +118,12 @@ module "shared-vpc" {
 module "audit-log-bucket" {
   source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
-  project_id               = module.shared_projects.shared_telemetry_id
-  prefix                   = "${var.audit_log_bucket_prefix}-${var.tb_discriminator}"
-  names                    = var.audit_bucket_name
-  location                 = var.location
-  labels                   = var.labels
-  lifecycle_rules          = var.lifecycle_rules
+  project_id      = module.shared_projects.shared_telemetry_id
+  prefix          = "${var.audit_log_bucket_prefix}-${var.tb_discriminator}"
+  names           = var.audit_bucket_name
+  location        = var.location
+  labels          = var.labels
+  lifecycle_rules = var.lifecycle_rules
 }
 
 module "audit-log-sink-creation" {

@@ -380,7 +380,7 @@ variable "gcs_logs_bucket_prefix" {
 variable "iam_members_bindings" {
   description = "The list of IAM members to grant permissions for the logs bucket"
   type = list(object({
-    role = string,
+    role   = string,
     member = string
   }))
   default = [{
@@ -402,18 +402,18 @@ variable "audit_log_bucket_prefix" {
   default = "log-bucket"
 }
 variable "audit_bucket_name" {
-  type = list(string)
+  type    = list(string)
   default = ["-admin-read-write-audit"]
 }
 variable "labels" {
   type    = map(string)
-  default = {"function" = "bucket_to_store_root_folder_audit_logs"}
+  default = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
 variable "lifecycle_rules" {
   default = [
     {
       action = {
-        type = "SetStorageClass"
+        type          = "SetStorageClass"
         storage_class = "NEARLINE"
       },
       condition = {
@@ -422,7 +422,7 @@ variable "lifecycle_rules" {
     },
     {
       action = {
-        type = "Delete"
+        type          = "Delete"
         storage_class = ""
       },
       condition = {
@@ -436,8 +436,8 @@ variable "lifecycle_rules" {
 
 variable "log_sink_name" {
   description = "Name of the audit bucket sink"
-  default = "audit_bucket_sink"
-  type = string
+  default     = "audit_bucket_sink"
+  type        = string
 }
 
 ### Audit IAM binding ###
@@ -446,4 +446,3 @@ variable "audit_iam_role" {
   description = "Give log writer permissions to create logs in project"
   default = "roles/storage.objectCreator"
 }
-
