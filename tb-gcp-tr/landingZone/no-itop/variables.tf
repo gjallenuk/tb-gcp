@@ -403,7 +403,7 @@ variable "audit_log_bucket_prefix" {
 }
 variable "audit_bucket_name" {
   type    = list(string)
-  default = ["-admin-read-write-audit"]
+  default = ["admin-read-write-audit"]
 }
 variable "labels" {
   type    = map(string)

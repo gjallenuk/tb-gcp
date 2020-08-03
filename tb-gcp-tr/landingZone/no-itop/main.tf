@@ -131,7 +131,7 @@ module "audit-log-sink-creation" {
 
   log_sink_folder      = var.root_id
   log_sink_name        = var.log_sink_name
-  log_sink_destination = module.audit-log-bucket.name
+  log_sink_destination = "storage.googleapis.com/${module.audit-log-bucket.name}"
   log_sink_filter      = "logName=(folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Factivity OR folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Fdata_access)"
 }
 
