@@ -394,23 +394,27 @@ variable "iam_members_bindings" {
 ### Audit Bucket Creator ###
 
 variable "location" {
+  description = "region for audit log bucket"
   type    = "string"
   default = "EUROPE-WEST2"
 }
 variable "audit_log_bucket_prefix" {
+  description = "prefix for audit log bucket name"
   type    = "string"
   default = "log-bucket"
 }
 variable "audit_bucket_name" {
+  description = "main audit log bucket name"
   type    = list(string)
   default = ["admin-read-write-audit"]
 }
 variable "labels" {
+  description = "labels attached to audit log bucket"
   type    = map(string)
   default = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
 variable "lifecycle_rules" {
-  description = "Move logs to nearline after 30d then delete after 365d"
+  description = "audit log bucket life cycle to move data into nearline before being deleted"
   default = [
     {
       action = {
