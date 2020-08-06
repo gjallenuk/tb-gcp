@@ -138,9 +138,9 @@ module "audit-log-sink-creation" {
 module "audit-log-writer-binding" {
   source = "../../bucket-iam-binding-creator"
 
-  bucket = "storage.googleapis.com/${module.audit-log-bucket.name}"
+  bucket  = module.audit-log-bucket.name
   members = module.audit-log-sink-creation.log_sink_writer
-  role   = var.audit_iam_role
+  role    = var.audit_iam_role
 }
 
 #####
