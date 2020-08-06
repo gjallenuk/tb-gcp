@@ -410,6 +410,7 @@ variable "labels" {
   default = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
 variable "lifecycle_rules" {
+  description = "Move logs to nearline after 30d then delete after 365d"
   default = [
     {
       action = {
