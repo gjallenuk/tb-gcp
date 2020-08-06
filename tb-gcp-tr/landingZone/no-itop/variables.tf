@@ -395,7 +395,7 @@ variable "iam_members_bindings" {
 
 variable "location" {
   type    = "string"
-  default = "EU"
+  default = "EUROPE-WEST2"
 }
 variable "audit_log_bucket_prefix" {
   type    = "string"
