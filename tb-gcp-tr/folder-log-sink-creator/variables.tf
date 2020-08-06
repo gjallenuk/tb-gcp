@@ -1,23 +1,23 @@
 variable "log_sink_folder" {
-  description = ""
+  description = "folder which logging will be enabled for"
   default     = ""
   type        = string
 }
 
 variable "log_sink_name" {
-  description = ""
+  description = "name of log sink"
   default     = ""
   type        = string
 }
 
 variable "log_sink_destination" {
-  description = ""
+  description = "destination to which logs will be exported"
   default     = ""
   type        = string
 }
 
 variable "log_sink_filter" {
-  description = ""
+  description = "filter to define what logs will be exported"
   default     = ""
   type        = string
 }
