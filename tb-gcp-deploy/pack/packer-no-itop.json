@@ -122,7 +122,7 @@
     },
     {
       "type": "file",
-      "source": "{{user `tb_repos_root_path`}}/tb-gcp-tr/project-iam-binding-creator",
+      "source": "{{user `tb_repos_root_path`}}/tb-gcp-tr/bucket-iam-binding-creator",
       "destination": "tb-gcp-tr/"
     },
     {
