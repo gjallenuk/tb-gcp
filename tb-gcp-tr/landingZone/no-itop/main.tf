@@ -135,25 +135,13 @@ module "audit-log-sink-creation" {
   log_sink_filter      = "logName=(folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Factivity OR folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Fdata_access)"
 }
 
-#module "audit-log-writer-binding" {
-#  source = "../../project-iam-binding-creator"
-#
-#  project = module.shared_projects.shared_telemetry_id
-#  members = module.audit-log-sink-creation.log_sink_writer
-#  role    = var.audit_iam_role
-#}
+module "audit-log-writer-binding" {
+  source = "../../bucket-iam-binding-creator"
 
-resource "google_storage_bucket_iam_binding" "binding" {
   bucket = "storage.googleapis.com/${module.audit-log-bucket.name}"
-  role = "roles/storage.objectAdmin"
-  members = [
-    module.audit-log-sink-creation.log_sink_writer,
-  ]
+  members = module.audit-log-sink-creation.log_sink_writer
+  role   = var.audit_iam_role
 }
-
-
-
-
 
 #####
 

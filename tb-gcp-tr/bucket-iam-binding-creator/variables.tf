@@ -1,4 +1,4 @@
-variable "project" {
+variable "bucket" {
   description = "Project ID of logging project"
   default     = ""
   type        = string
