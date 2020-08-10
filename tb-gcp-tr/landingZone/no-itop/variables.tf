@@ -398,15 +398,10 @@ variable "audit_log_bucket_location" {
   type    = "string"
   default = "EUROPE-WEST2"
 }
-variable "root_folder_audit_log_bucket_name_prefix" {
-  description = "root folder audit log bucket name prefix"
-  type    = "string"
-  default = "root-folder-audit-logs"
-}
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
   type    = string
-  default = "admin-read-write-audit"
+  default = "root-folder-audit-logs"
 }
 variable "audit_log_bucket_labels" {
   description = "audit log bucket labels attached to audit log bucket"
