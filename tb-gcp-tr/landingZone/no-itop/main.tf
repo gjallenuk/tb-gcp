@@ -135,12 +135,10 @@ module "audit-log-sink-creation" {
   log_sink_filter      = "logName=(folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Factivity OR folders/${var.root_id}/logs/cloudaudit.googleapis.com%2Fdata_access)"
 }
 
-module "audit-log-writer-binding" {
-  source = "../../bucket-iam-binding-creator"
-
+resource "google_storage_bucket_iam_binding" "audit-bucket-iam-binding" {
   bucket  = module.audit-log-bucket.name
-  members = module.audit-log-sink-creation.log_sink_writer
   role    = var.audit_iam_role
+  members = module.audit-log-sink-creation.log_sink_writer
 }
 
 #####
