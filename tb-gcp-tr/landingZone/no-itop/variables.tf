@@ -455,4 +455,3 @@ variable "log_sink_writer_bucket_iam_role" {
   description = "Role required by the log sink writer when writing into a bucket. The default should not be changed"
   default     = "roles/storage.objectCreator"
 }
-
