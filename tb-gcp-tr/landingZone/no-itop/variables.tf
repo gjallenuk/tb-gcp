@@ -393,28 +393,28 @@ variable "iam_members_bindings" {
 
 ### Audit Bucket Creator ###
 
-variable "location" {
-  description = "region for audit log bucket"
+variable "audit_log_bucket_location" {
+  description = "region for audit log bucket location"
   type    = "string"
-  default = "US"
+  default = "EUROPE-WEST2"
 }
-variable "audit_log_bucket_prefix" {
-  description = "prefix for audit log bucket name"
+variable "root_folder_audit_log_bucket_name_prefix" {
+  description = "root folder audit log bucket name prefix"
   type    = "string"
-  default = "log-bucket"
+  default = "root-folder-audit-logs"
 }
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
-  type    = list(string)
-  default = ["admin-read-write-audit"]
+  type    = string
+  default = "admin-read-write-audit"
 }
-variable "labels" {
-  description = "labels attached to audit log bucket"
+variable "audit_log_bucket_labels" {
+  description = "audit log bucket labels attached to audit log bucket"
   type    = map(string)
   default = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
-variable "lifecycle_rules" {
-  description = "audit log bucket life cycle to move data into nearline before being deleted"
+variable "root_folder_audit_log_bucket_lifecycle_rules" {
+  description = "root folder audit log bucket lifecycle rules. Defaults to moving from standard to nearline after 30 days and deleting after 365."
   default = [
     {
       action = {
@@ -428,7 +428,6 @@ variable "lifecycle_rules" {
     {
       action = {
         type          = "Delete"
-        storage_class = ""
       },
       condition = {
         age = "365"
@@ -439,15 +438,21 @@ variable "lifecycle_rules" {
 
 ### Audit Folder Log Sink Creator ###
 
-variable "log_sink_name" {
-  description = "Name of the audit bucket sink"
-  default     = "audit_bucket_sink"
+variable "root_folder_audit_log_sink_name" {
+  description = "root folder audit log sink name"
+  default     = "root-folder-audit-log-sink-name"
   type        = string
+}
+variable "include_children" {
+  description = "include logs for folders and project below folder specified"
+  default     = true
+  type        = bool
 }
 
 ### Audit IAM binding ###
 
-variable "audit_iam_role" {
-  description = "Give log writer permissions to create logs in project"
-  default = "roles/storage.objectCreator"
+variable "log_sink_writer_bucket_iam_role" {
+  description = "Role required by the log sink writer when writing into a bucket. The default should not be changed"
+  default     = "roles/storage.objectCreator"
 }
+
