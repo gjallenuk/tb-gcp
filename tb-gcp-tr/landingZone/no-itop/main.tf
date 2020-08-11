@@ -136,7 +136,7 @@ resource "google_logging_folder_sink" "audit-log-sink" {
 
 resource "google_storage_bucket_iam_binding" "audit-bucket-iam-binding" {
   bucket  = module.audit-log-bucket.name
-  role    = var.log_sink_writer_bucket_iam_role
+  role    = "roles/storage.objectCreator"
   members = google_logging_folder_sink.audit-log-sink.writer_identity
 }
 
