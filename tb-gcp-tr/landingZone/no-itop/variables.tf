@@ -408,8 +408,8 @@ variable "audit_bucket_name" {
   type    = list(string)
   default = ["admin-read-write-audit"]
 }
-variable "audit_log_bucket_labels" {
-  description = "audit log bucket labels attached to audit log bucket"
+variable "root_folder_audit_log_bucket_labels" {
+  description = "root folder audit log bucket labels"
   type    = map(string)
   default = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
