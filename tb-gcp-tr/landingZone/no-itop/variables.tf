@@ -399,9 +399,9 @@ variable "audit_log_bucket_location" {
   default = "EUROPE-WEST2"
 }
 variable "root_folder_audit_log_bucket_prefix" {
-  description = "prefix for audit log bucket name"
+  description = "root folder audit log bucket name prefix"
   type    = "string"
-  default = "log-bucket"
+  default = "root-folder-log-bucket"
 }
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
