@@ -401,12 +401,12 @@ variable "audit_log_bucket_location" {
 variable "root_folder_audit_log_bucket_prefix" {
   description = "root folder audit log bucket name prefix"
   type    = "string"
-  default = "root-folder-log-bucket"
+  default = "root-folder"
 }
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
   type    = list(string)
-  default = ["admin-read-write-audit"]
+  default = ["audit-logs"]
 }
 variable "root_folder_audit_log_bucket_labels" {
   description = "root folder audit log bucket labels"
