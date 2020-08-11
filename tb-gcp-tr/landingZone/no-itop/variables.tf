@@ -415,15 +415,15 @@ variable "root_folder_audit_log_bucket_lifecycle_rules" {
       action = {
         type          = "SetStorageClass"
         storage_class = "NEARLINE"
-      },
+      }
       condition = {
-        age = "30"
+        age = 30
       }
     },
     {
       action = {
         type          = "Delete"
-      },
+      }
       condition = {
         age = "365"
       }
