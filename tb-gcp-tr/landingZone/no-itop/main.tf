@@ -121,7 +121,7 @@ module "audit-log-bucket" {
   project_id      = module.shared_projects.shared_telemetry_id
   prefix          = "${var.audit_log_bucket_prefix}-${var.tb_discriminator}"
   names           = var.audit_bucket_name
-  location        = var.location
+  location        = var.audit_log_bucket_location
   labels          = var.audit_log_bucket_labels
   lifecycle_rules = var.root_folder_audit_log_bucket_lifecycle_rules
 }

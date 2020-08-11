@@ -393,7 +393,7 @@ variable "iam_members_bindings" {
 
 ### Audit Bucket Creator ###
 
-variable "location" {
+variable "audit_log_bucket_location" {
   description = "region for audit log bucket"
   type    = "string"
   default = "EUROPE-WEST2"
