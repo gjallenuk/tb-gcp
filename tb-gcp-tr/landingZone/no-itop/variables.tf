@@ -395,28 +395,28 @@ variable "iam_members_bindings" {
 
 variable "audit_log_bucket_location" {
   description = "region for audit log bucket"
-  type    = "string"
-  default = "EUROPE-WEST2"
+  type        = "string"
+  default     = "EUROPE-WEST2"
 }
 variable "root_folder_audit_log_bucket_prefix" {
   description = "root folder audit log bucket name prefix"
-  type    = "string"
-  default = "root-folder"
+  type        = "string"
+  default     = "root-folder"
 }
 variable "audit_log_bucket_storage_class" {
   description = "storage class for the bucket"
-  type = "string"
-  default = "REGIONAL"
+  type        = "string"
+  default     = "REGIONAL"
 }
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
-  type    = list(string)
-  default = ["audit-logs"]
+  type        = list(string)
+  default     = ["audit-logs"]
 }
 variable "root_folder_audit_log_bucket_labels" {
   description = "root folder audit log bucket labels"
-  type    = map(string)
-  default = { "function" = "bucket_to_store_root_folder_audit_logs" }
+  type        = map(string)
+  default     = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
 variable "root_folder_audit_log_bucket_lifecycle_rules" {
   description = "root folder audit log bucket lifecycle rules. Defaults to moving from standard to nearline after 30 days and deleting after 365."
@@ -432,7 +432,7 @@ variable "root_folder_audit_log_bucket_lifecycle_rules" {
     },
     {
       action = {
-        type          = "Delete"
+        type = "Delete"
       },
       condition = {
         age = "365"

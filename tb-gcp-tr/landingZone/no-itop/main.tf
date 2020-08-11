@@ -275,8 +275,8 @@ module "SharedServices_jenkinsmaster_creation" {
   cluster_context   = module.k8s-ec_context.context_name
   dependency_var    = null_resource.kubernetes_jenkins_service_account_key_secret.id
 }
-  
-  
+
+
 module "SharedServices_configuration_file" {
   source = "../../../tb-common-tr/start_service"
 
