@@ -393,15 +393,20 @@ variable "iam_members_bindings" {
 
 ### Audit Bucket Creator ###
 
-variable "audit_log_bucket_location" {
-  description = "region for audit log bucket location"
+variable "location" {
+  description = "region for audit log bucket"
   type    = "string"
   default = "EUROPE-WEST2"
 }
+variable "audit_log_bucket_prefix" {
+  description = "prefix for audit log bucket name"
+  type    = "string"
+  default = "log-bucket"
+}
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
-  type    = string
-  default = "root-folder-audit-logs"
+  type    = list(string)
+  default = ["admin-read-write-audit"]
 }
 variable "audit_log_bucket_labels" {
   description = "audit log bucket labels attached to audit log bucket"
@@ -415,15 +420,15 @@ variable "root_folder_audit_log_bucket_lifecycle_rules" {
       action = {
         type          = "SetStorageClass"
         storage_class = "NEARLINE"
-      }
+      },
       condition = {
-        age = 30
+        age = "30"
       }
     },
     {
       action = {
         type          = "Delete"
-      }
+      },
       condition = {
         age = "365"
       }
