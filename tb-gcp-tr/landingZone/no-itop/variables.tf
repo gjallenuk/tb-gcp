@@ -391,7 +391,7 @@ variable "iam_members_bindings" {
 
 ##### Audit logging #####
 
-### Audit Bucket Creator ###
+### Audit Bucket ###
 
 variable "audit_log_bucket_location" {
   description = "region for audit log bucket"
