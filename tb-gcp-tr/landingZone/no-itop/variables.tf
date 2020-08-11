@@ -403,6 +403,11 @@ variable "root_folder_audit_log_bucket_prefix" {
   type    = "string"
   default = "root-folder"
 }
+variable "audit_log_bucket_storage_class" {
+  description = "storage class for the bucket"
+  type = "string"
+  default = "REGIONAL"
+}
 variable "audit_bucket_name" {
   description = "main audit log bucket name"
   type    = list(string)
