@@ -393,27 +393,27 @@ variable "iam_members_bindings" {
 
 ### Audit Bucket ###
 
-variable "audit_log_bucket_location" {
+variable "tb_folder_admin_rw_audit_log_bucket_location" {
   description = "audit log bucket's location"
   type        = "string"
   default     = "europe-west2"
 }
-variable "audit_log_bucket_storage_class" {
-  description = "storage class for the bucket"
+variable "tb_folder_admin_rw_audit_log_bucket_storage_class" {
+  description = "storage class for the admin read/write audit bucket"
   type        = "string"
   default     = "REGIONAL"
 }
-variable "audit_log_bucket_name" {
+variable "tb_folder_admin_rw_audit_log_bucket_name" {
   description = "main audit log bucket name"
   type        = string
   default     = "tb-root-audit-logs"
 }
-variable "tb_root_audit_log_bucket_labels" {
+variable "tb_folder_admin_rw_audit_log_bucket_labels" {
   description = "root folder audit log bucket labels"
   type        = map(string)
   default     = { "function" = "bucket_to_store_root_folder_audit_logs" }
 }
-variable "tb_root_audit_log_bucket_lifecycle_rules" {
+variable "tb_folder_admin_rw_audit_log_bucket_lifecycle_rules" {
   description = "root folder audit log bucket lifecycle rules. Defaults to moving from standard to nearline after 30 days and deleting after 365."
   default = [
     {
@@ -439,7 +439,7 @@ variable "tb_root_audit_log_bucket_lifecycle_rules" {
 
 ### Audit Folder Log Sink Creator ###
 
-variable "tb_root_audit_log_sink_name" {
+variable "tb_folder_admin_rw_audit_log_sink_name" {
   description = "root folder audit log sink name"
   default     = "root-folder-audit-log-sink-name"
   type        = string
