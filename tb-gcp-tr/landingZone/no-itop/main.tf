@@ -116,7 +116,7 @@ module "shared-vpc" {
 ##### Audit logging #####
 
 module "audit-log-bucket" {
-  source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
+  source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=logging"
 
   project_id      = module.shared_projects.shared_telemetry_id
   name            = "${var.tb_folder_admin_rw_audit_log_bucket_name}-${var.tb_discriminator}"
