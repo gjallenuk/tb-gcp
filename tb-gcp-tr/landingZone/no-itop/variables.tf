@@ -394,7 +394,7 @@ variable "iam_members_bindings" {
 ### Audit Bucket ###
 
 variable "audit_log_bucket_location" {
-  description = "region for audit log bucket"
+  description = "audit log bucket's location"
   type        = "string"
   default     = "europe-west2"
 }
