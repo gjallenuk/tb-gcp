@@ -394,27 +394,27 @@ variable "iam_members_bindings" {
 ### Audit Bucket ###
 
 variable "tb_folder_admin_rw_audit_log_bucket_location" {
-  description = "audit log bucket's location"
+  description = "location for tb folder admin read/write bucket audit logs"
   type        = "string"
   default     = "europe-west2"
 }
 variable "tb_folder_admin_rw_audit_log_bucket_storage_class" {
-  description = "storage class for the admin read/write audit bucket"
+  description = "storage class for tb folder admin read/write bucket audit logs"
   type        = "string"
   default     = "REGIONAL"
 }
 variable "tb_folder_admin_rw_audit_log_bucket_name" {
-  description = "main audit log bucket name"
+  description = "bucket name for tb folder admin read/write bucket audit logs"
   type        = string
   default     = "tb-root-audit-logs"
 }
 variable "tb_folder_admin_rw_audit_log_bucket_labels" {
-  description = "root folder audit log bucket labels"
+  description = "labels for tb folder admin read/write bucket audit logs"
   type        = map(string)
-  default     = { "function" = "bucket_to_store_root_folder_audit_logs" }
+  default     = { "function" = "bucket_to_store_root_folder_admin_rw_audit_logs" }
 }
 variable "tb_folder_admin_rw_audit_log_bucket_lifecycle_rules" {
-  description = "root folder audit log bucket lifecycle rules. Defaults to moving from standard to nearline after 30 days and deleting after 365."
+  description = "lifecycle rules for tb folder admin read/write bucket audit logs. Defaults to moving from standard to nearline after 30 days and deleting after 365."
   default = [
     {
       action = {
@@ -440,8 +440,8 @@ variable "tb_folder_admin_rw_audit_log_bucket_lifecycle_rules" {
 ### Audit Folder Log Sink Creator ###
 
 variable "tb_folder_admin_rw_audit_log_sink_name" {
-  description = "root folder audit log sink name"
-  default     = "root-folder-audit-log-sink-name"
+  description = "log sink name for tb folder admin read/write bucket audit logs"
+  default     = "tb-folder-admin-rw-audit-log-sink-name"
   type        = string
 }
 variable "include_children" {
