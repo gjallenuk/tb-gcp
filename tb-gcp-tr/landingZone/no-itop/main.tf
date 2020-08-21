@@ -119,7 +119,7 @@ module "audit-log-bucket" {
   source = "github.com/tranquilitybase-io/terraform-google-cloud-storage.git//modules/simple_bucket?ref=v1.6.0-logging"
 
   project_id      = module.shared_projects.shared_telemetry_id
-  name            = "${var.audit_bucket_name}-${var.tb_discriminator}"
+  name            = "${var.audit_log_bucket_name}-${var.tb_discriminator}"
   location        = var.audit_log_bucket_location
   storage_class   = var.audit_log_bucket_storage_class
   labels          = var.tb_root_audit_log_bucket_labels

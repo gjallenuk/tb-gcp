@@ -403,7 +403,7 @@ variable "audit_log_bucket_storage_class" {
   type        = "string"
   default     = "REGIONAL"
 }
-variable "audit_bucket_name" {
+variable "audit_log_bucket_name" {
   description = "main audit log bucket name"
   type        = string
   default     = "tb-root-audit-logs"
