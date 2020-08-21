@@ -411,7 +411,7 @@ variable "tb_folder_admin_rw_audit_log_bucket_name" {
 variable "tb_folder_admin_rw_audit_log_bucket_labels" {
   description = "labels for tb folder admin read/write bucket audit logs"
   type        = map(string)
-  default     = { "function" = "bucket_to_store_root_folder_admin_rw_audit_logs" }
+  default     = { "function" = "bucket-to-store-root-folder-admin-rw-audit-logs" }
 }
 variable "tb_folder_admin_rw_audit_log_bucket_lifecycle_rules" {
   description = "lifecycle rules for tb folder admin read/write bucket audit logs. Defaults to moving from standard to nearline after 30 days and deleting after 365."
