@@ -428,6 +428,7 @@ variable "tb_root_audit_log_bucket_lifecycle_rules" {
     {
       action = {
         type = "Delete"
+        storage_class = ""
       },
       condition = {
         age = "365"
