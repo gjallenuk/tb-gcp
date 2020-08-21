@@ -445,7 +445,7 @@ variable "tb_folder_admin_rw_audit_log_sink_name" {
   type        = string
 }
 variable "include_children" {
-  description = "include logs for folders and project below folder specified"
+  description = "include logs for folders and project below the tb folder"
   default     = true
   type        = bool
 }
