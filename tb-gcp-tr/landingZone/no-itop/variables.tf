@@ -396,7 +396,7 @@ variable "iam_members_bindings" {
 variable "audit_log_bucket_location" {
   description = "region for audit log bucket"
   type        = "string"
-  default     = "EUROPE-WEST2"
+  default     = "europe-west2"
 }
 variable "audit_log_bucket_storage_class" {
   description = "storage class for the bucket"
