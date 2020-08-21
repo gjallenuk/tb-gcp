@@ -406,7 +406,7 @@ variable "tb_folder_admin_rw_audit_log_bucket_storage_class" {
 variable "tb_folder_admin_rw_audit_log_bucket_name" {
   description = "bucket name for tb folder admin read/write bucket audit logs"
   type        = string
-  default     = "tb_folder_admin_rw_audit"
+  default     = "tb-folder-admin-rw-audit"
 }
 variable "tb_folder_admin_rw_audit_log_bucket_labels" {
   description = "labels for tb folder admin read/write bucket audit logs"
