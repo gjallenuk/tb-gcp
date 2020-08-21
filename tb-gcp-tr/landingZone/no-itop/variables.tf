@@ -441,7 +441,7 @@ variable "tb_folder_admin_rw_audit_log_bucket_lifecycle_rules" {
 
 variable "tb_folder_admin_rw_audit_log_sink_name" {
   description = "log sink name for tb folder admin read/write bucket audit logs"
-  default     = "tb-folder-admin-rw-audit-log-sink-name"
+  default     = "tb-folder-admin-rw-audit-log-sink"
   type        = string
 }
 variable "include_children" {
