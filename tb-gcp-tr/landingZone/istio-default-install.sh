@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ISTIO_VERSION=1.6.8
 
 sp='/-\|'
 sc=0
