@@ -22,11 +22,11 @@ resource "null_resource" "kubernetes_resource" {
 
   provisioner "local-exec" {
     command = <<EOF
-echo 'kubectl_config_args="--kubeconfig=${self.triggers.cluster_config_path}"
+echo 'kubectl_config_args="--kubeconfig=${var.cluster_config_path}"
 if [[ -n "${var.cluster_context}" ]]; then
-  kubectl_config_args="$kubectl_config_args --context=${self.triggers.context}"
+  kubectl_config_args="$kubectl_config_args --context=${var.cluster_context}"
 fi
-kubectl $kubectl_config_args apply -f ${self.triggers.k8s_template}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh
+kubectl $kubectl_config_args apply -f ${var.k8s_template_file}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh
 EOF
 
   }
@@ -34,7 +34,7 @@ EOF
   provisioner "local-exec" {
     command = <<EOF
 echo 'kubectl_config_args="--kubeconfig=${self.triggers.cluster_config_path}"
-if [[ -n "${var.cluster_context}" ]]; then
+if [[ -n "${self.triggers.context}" ]]; then
   kubectl_config_args="$kubectl_config_args --context=${self.triggers.context}"
 fi
 kubectl $kubectl_config_args delete -f ${self.triggers.k8s_template}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh
