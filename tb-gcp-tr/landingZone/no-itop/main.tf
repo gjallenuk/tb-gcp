@@ -206,6 +206,7 @@ module "SharedServices_namespace_creation" {
 resource "null_resource" "kubernetes_service_account_key_secret" {
   triggers = {
     content = module.SharedServices_namespace_creation.id
+    k8_name = module.k8s-ec_context.context_name 
   }
 
   provisioner "local-exec" {
@@ -213,7 +214,7 @@ resource "null_resource" "kubernetes_service_account_key_secret" {
   }
 
   provisioner "local-exec" {
-    command = "echo 'kubectl --context=${module.k8s-ec_context.context_name} delete secret ec-service-account' -n ssp | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh"
+    command = "echo 'kubectl --context=${self.triggers.k8_name} delete secret ec-service-account' -n ssp | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh"
     when    = destroy
   }
 }
