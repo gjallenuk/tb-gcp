@@ -171,10 +171,11 @@ module "gke-ec" {
   cluster_default_max_pods_per_node = var.cluster_ec_default_max_pods_per_node
 
   apis_dependency          = module.apis_activation.all_apis_enabled
-  depends_on               = [module.shared-vpc.gke_subnetwork_ids]
+  shared_vpc_dependency    = module.shared-vpc.gke_subnetwork_ids
   istio_status             = var.istio_status
   gke_pod_network_name     = var.gke_pod_network_name
   gke_service_network_name = var.gke_service_network_name
+  depends_on               = [module.shared_vpc.shared_vpc_name]
 }
 
 resource "google_sourcerepo_repository" "EC" {
