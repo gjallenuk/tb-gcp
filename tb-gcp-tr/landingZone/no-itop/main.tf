@@ -171,7 +171,7 @@ module "gke-ec" {
   cluster_default_max_pods_per_node = var.cluster_ec_default_max_pods_per_node
 
   apis_dependency          = module.apis_activation.all_apis_enabled
-  shared_vpc_dependency    = module.shared-vpc.gke_subnetwork_ids
+  depends_on               = [module.shared-vpc.gke_subnetwork_ids]
   istio_status             = var.istio_status
   gke_pod_network_name     = var.gke_pod_network_name
   gke_service_network_name = var.gke_service_network_name
@@ -180,7 +180,6 @@ module "gke-ec" {
 resource "google_sourcerepo_repository" "EC" {
   name       = var.ec_repository_name
   project    = module.shared_projects.shared_ec_id
-  depends_on = [module.apis_activation]
 }
 
 module "k8s-ec_context" {
