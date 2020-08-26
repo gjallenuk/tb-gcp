@@ -210,7 +210,7 @@ resource "null_resource" "kubernetes_service_account_key_secret" {
   }
 
   provisioner "local-exec" {
-    command = "echo 'kubectl --context=${module.k8s-ec_context.context_name} create secret generic ec-service-account -n ssp --from-file=${local_file.ec_service_account_key.filename}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh"
+    command = "echo 'kubectl --context=${self.triggers.k8_name} create secret generic ec-service-account -n ssp --from-file=${local_file.ec_service_account_key.filename}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh"
   }
 
   provisioner "local-exec" {
@@ -228,7 +228,7 @@ resource "null_resource" "kubernetes_jenkins_service_account_key_secret" {
   }
 
   provisioner "local-exec" {
-    command = "echo 'kubectl --context=${module.k8s-ec_context.context_name} create secret generic ec-service-account -n cicd --from-file=${local_file.ec_service_account_key.filename}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh"
+    command = "echo 'kubectl --context=${self.triggers.k8_name} create secret generic ec-service-account -n cicd --from-file=${local_file.ec_service_account_key.filename}' | tee -a /opt/tb/repo/tb-gcp-tr/landingZone/kube.sh"
   }
 
   provisioner "local-exec" {
