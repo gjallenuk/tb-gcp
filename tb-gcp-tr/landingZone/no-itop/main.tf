@@ -175,6 +175,7 @@ module "gke-ec" {
   istio_status             = var.istio_status
   gke_pod_network_name     = var.gke_pod_network_name
   gke_service_network_name = var.gke_service_network_name
+  depends_on = [module.shared-vpc]
 }
 
 resource "google_sourcerepo_repository" "EC" {
