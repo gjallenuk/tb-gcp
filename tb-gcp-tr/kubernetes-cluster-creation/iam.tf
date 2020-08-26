@@ -13,14 +13,14 @@
 # limitations under the License.
 
 # separate google-beta provider needed to assign sharedvpc networkUser permissions
-provider "google" {
-  version = "~> 3.3"
-}
+# provider "google" {
+#   version = "~> 3.3"
+# }
 
-provider "google-beta" {
-  alias   = "shared-vpc"
-  version = "~> 3.3"
-}
+# provider "google-beta" {
+#   alias   = "shared-vpc"
+#   version = "~> 3.3"
+# }
 
 # create compute service account for kubernetes cluster
 resource "google_service_account" "cluster" {
