@@ -20,12 +20,12 @@ data "google_project" "cluster" {
   project_id = var.cluster_project_id
 }
 
-resource "null_resource" "shared_vpc_created" {
+# resource "null_resource" "shared_vpc_created" {
   
-  triggers = {
-    trigger_dependency = var.shared_vpc_dependency
-  }
-}
+#   triggers = {
+#     trigger_dependency = var.shared_vpc_dependency
+#   }
+# }
 
 data "google_client_config" "default" {
 }
