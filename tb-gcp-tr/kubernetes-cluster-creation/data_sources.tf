@@ -21,8 +21,11 @@ data "google_project" "cluster" {
 }
 
 resource "null_resource" "shared_vpc_created" {
+  local {
+    vpc_dep = var.shared_vpc_dependency
+  }
   triggers = {
-    trigger_dependency = var.shared_vpc_dependency
+    trigger_dependency = local.vpc_dep
   }
 }
 
